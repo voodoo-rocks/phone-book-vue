@@ -59,7 +59,7 @@ export default defineComponent({
     },
     selectEditItem: {
       type: Object as PropType <ContactType>,
-      required: true
+      default: () => ({name: '', email: '', phone: ''})
     },
   },
   emits: ['editContact'],
