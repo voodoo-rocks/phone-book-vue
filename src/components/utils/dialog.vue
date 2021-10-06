@@ -88,7 +88,7 @@ export default defineComponent({
         } else {
           await store.commit("ADD_CONTACT_ITEM",
             {
-              id: Math.floor(Math.random() * 9),
+              id: Math.floor(Math.random() * 100),
               name: String(name.value),
               email: String(email.value),
               phone: String(phone.value)
