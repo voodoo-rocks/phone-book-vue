@@ -76,25 +76,24 @@ export default defineComponent({
     }
 
     const saveContact = async () => {
-      if(props.selectEditItem.id)
-      {
-        await store.commit("EDIT_CONTACT_ITEM",
-          {
-            id: props.selectEditItem.id,
-            name: String(name.value),
-            email: String(email.value),
-            phone: String(phone.value)
-          });
-      }
-      else {
-        if(String(name.value.trim()).length && String(email.value.trim()).length && String(phone.value.trim()).length)
-        await store.commit("ADD_CONTACT_ITEM",
-          {
-            id: Math.floor(Math.random() * 10),
-            name: String(name.value),
-            email: String(email.value),
-            phone: String(phone.value)
-          });
+      if(String(name.value.trim()).length && String(email.value.trim()).length && String(phone.value.trim()).length) {
+        if (props.selectEditItem.id) {
+          await store.commit("EDIT_CONTACT_ITEM",
+            {
+              id: props.selectEditItem.id,
+              name: String(name.value),
+              email: String(email.value),
+              phone: String(phone.value)
+            });
+        } else {
+          await store.commit("ADD_CONTACT_ITEM",
+            {
+              id: Math.floor(Math.random() * 10),
+              name: String(name.value),
+              email: String(email.value),
+              phone: String(phone.value)
+            });
+        }
       }
       closeDialog()
     }

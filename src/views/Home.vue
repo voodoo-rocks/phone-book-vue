@@ -83,7 +83,7 @@
                 </v-card-actions>
               </div>
               <v-avatar class="ma-3" size="125" tile>
-                <v-img :src="`https://lorempixel.com/590/59${item.id}/`"></v-img>
+                <v-img :src="`https://lorempixel.com/590/59${item.id - 1}/`"></v-img>
               </v-avatar>
             </div>
           </v-card>
