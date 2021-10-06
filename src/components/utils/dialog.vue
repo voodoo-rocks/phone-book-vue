@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center">
     <v-dialog
-      v-model="dialog"
+      v-model="modelValue"
       persistent
     >
       <v-card>
@@ -9,13 +9,13 @@
           <v-container>
             <v-row>
               <label class="d-flex flex-column">Name
-                <input  v-model="name" :placeholder="selectEditItem.name" class="text-h5" />
+                <input  v-model="name" :placeholder="selectEditItem.name || 'Введите имя...'" class="text-h5" />
               </label>
               <label class="d-flex flex-column">Email
-                <input  v-model="email" :placeholder="selectEditItem.email" class="text-h6" />
+                <input  v-model="email" :placeholder="selectEditItem.email  || 'Введите email...'" class="text-h6" />
               </label>
               <label class="d-flex flex-column">Phone
-                <input  v-model="phone" :placeholder="selectEditItem.phone" class="text-h6" />
+                <input  v-model="phone" :placeholder="selectEditItem.phone  || 'Введите имя...'" class="text-h6" />
               </label>
             </v-row>
           </v-container>
@@ -25,14 +25,14 @@
           <v-btn
             color="blue darken-1"
             text
-            @click="closeDialog"
+            @click.prevent="closeDialog"
           >
             Close
           </v-btn>
           <v-btn
             color="blue darken-1"
             text
-            @click="saveContact"
+            @click.prevent="saveContact"
           >
             Save
           </v-btn>
@@ -67,35 +67,47 @@ export default defineComponent({
     const store = useStore(key)
 
 
-    const dialog = ref(false)
     const name = ref()
     const email = ref()
     const phone = ref()
-    const closeDialog = () => {
-      emit('editContact')
-      name.value = null
-      dialog.value = false
+
+    const closeDialog =  () => {
+       emit('editContact')
     }
 
-
-
     const saveContact = async () => {
-      await store.commit('EDIT_CONTACT_ITEM',
-        {id: props.selectEditItem.id, name: String(name.value), email: String(email.value), phone:  String(phone.value)})
+      if(props.selectEditItem.id)
+      {
+        await store.commit("EDIT_CONTACT_ITEM",
+          {
+            id: props.selectEditItem.id,
+            name: String(name.value),
+            email: String(email.value),
+            phone: String(phone.value)
+          });
+      }
+      else {
+        await store.commit("ADD_CONTACT_ITEM",
+          {
+            id: Math.floor(Math.random() * 10),
+            name: String(name.value),
+            email: String(email.value),
+            phone: String(phone.value)
+          });
+      }
       closeDialog()
     }
 
 
 
     watch(() => props.modelValue, () => {
-      dialog.value = !dialog.value
-      name.value = props.selectEditItem.name
-      email.value  = props.selectEditItem.email
-      phone.value  = props.selectEditItem.phone
+        name.value = props.selectEditItem.name
+        email.value = props.selectEditItem.email
+        phone.value = props.selectEditItem.phone
     });
 
 
-    return {dialog, closeDialog, saveContact, name, email, phone}
+    return { closeDialog, saveContact, name, email, phone}
   }
 })
 </script>
