@@ -1,0 +1,87 @@
+Arguments: 
+  /usr/local/bin/node /Users/qsatan1s/.yarn/bin/yarn.js dev
+
+PATH: 
+  /Users/qsatan1s/.yarn/bin:/Users/qsatan1s/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/qsatan1s/Desktop/myProject/contact/node_modules/.bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  14.17.6
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/qsatan1s/Desktop/myProject/contact/package.json: Unexpected token } in JSON at position 1670
+      at JSON.parse (<anonymous>)
+      at /Users/qsatan1s/.yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/qsatan1s/.yarn/lib/cli.js:310:30)
+      at /Users/qsatan1s/.yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "contact",
+    "version": "0.0.0",
+    "scripts": {
+      "lint:style": "stylelint src/**/*.{css,scss,vue}",
+      "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
+      "serve": "vite preview",
+      "build": "vite build",
+      "dev": "vite"
+    },
+    "lint-staged": {
+      "*.{ts,tsx}": "eslint --fix",
+      "*.{css,scss,vue}": "stylelint --fix",
+      "*": "prettier -w -u"
+    },
+    "dependencies": {
+      "@intlify/vite-plugin-vue-i18n": "^2.4.0",
+      "@mdi/font": "5.9.55",
+      "roboto-fontface": "*",
+      "vue": "^3.2.6",
+      "vue-i18n": "^9.1.7",
+      "vue-router": "^4.0.11",
+      "vuetify": "^3.0.0-alpha.0",
+      "vuex": "^4.0.2"
+    },
+    "devDependencies": {
+      "@typescript-eslint/eslint-plugin": "^4.30.0",
+      "@typescript-eslint/parser": "^4.30.0",
+      "@vitejs/plugin-vue": "^1.6.0",
+      "@vue/cli-plugin-router": "^4.5.13",
+      "@vue/cli-plugin-typescript": "~4.5.0",
+      "@vue/cli-plugin-vuex": "~4.5.0",
+      "@vue/compiler-sfc": "^3.0.5",
+      "@vue/eslint-config-prettier": "^6.0.0",
+      "@vue/eslint-config-typescript": "^7.0.0",
+      "eslint": "^7.32.0",
+      "eslint-plugin-prettier": "^4.0.0",
+      "eslint-plugin-vue": "^7.17.0",
+      "prettier": "^2.3.2",
+      "sass": "~1.32.0",
+      "sass-loader": "^10.0.0",
+      "stylelint": "^13.13.1",
+      "stylelint-config-recommended": "^5.0.0",
+      "stylelint-config-standard": "^22.0.0",
+      "typescript": "^4.3.2",
+      "vite": "^2.5.1",
+      "vue-cli-plugin-vuetify": "~2.4.2",
+      "vue-tsc": "^0.2.2",
+      "@vue/eslint-config-airbnb": "^5.0.2",
+      "cross-env": "^7.0.3",
+  
+      "eslint-config-prettier": "^8.3.0",
+      "eslint-import-resolver-typescript": "^2.5.0",
+      "eslint-plugin-import": "^2.20.2",
+  
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
